@@ -1,9 +1,191 @@
 <!DOCTYPE html>
+<!-- THIS IS HOW YOU COMMENT IN HTML -->
 <html lang="en">
     <head>
-        <title>DELI-VERY</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/deli-very.css">
+
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/style.css" >
+        <link rel="stylesheet" href="http://localhost:3000/css/deli-very.css">
+
+
+
+
+        <script type="text/javascript" src="/js/menu.js" defer></script>
+        <script src="https://vuejs.org/js/vue.js" defers></script>
+
+        <!--<script src="/js/js_script.js" defer></script>-->
+
+
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/deli-very.js" defer></script>
+
+        <script src = "js/vue_script.js" defer></script>
+
+        <title>Burger Town</title>
+        <meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
+        <main>
+            <header class="Intro">
+                <h1>Welcome to Burger Town</h1>
+                <p>We are an indie restaurant dedicated to serving custom burgers to custom customers,
+                CHEERIO!</p>
+                <!----<img src="img/Cow Background.jpg" title = "Cows in Sunset">---->
+            </header>
+            <section id = "Rest. Info">
+                <h2>Select Burger, man</h2>
+                <p>Please choose one of these burgers, yo</p>
+                <!-- BURGER SELECTION VUE -->
+                <div id = "burgerWrapper">
+                    <div class = "theWrapper">
+                        <div v-for = "item in burgers" :class = "item.burg">
+                            <input type = "checkbox" name = "burgerSelect" :value = "item.name"><h1>{{ item.name }}</h1>
+
+                            <img :src = "item.image" class = "burgerPictures">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--<section class="BWrapper">
+
+            </section>-->
+            <!--<section id = "BurgerGrid">
+                <div class="wrapper">
+                    <div class="BurgerHead"><h1>Select a Burger</h1></div>
+                    <div class="Burger1">
+                        <img src="img/burgare 1.jpg" title= "Nice burger" height="300" id = "b1">
+                        <div class = "overlay">
+                            <div class="text">Nice Burger</div>
+                        </div>
+                    </div>
+                    <div class="Burger2">
+                        <img src="img/burgare 2.jpg" title= "Cartoon burger" height="300" id = "b2">
+                        <div class = "overlay">
+                            <div class="text">Cartoon Burger</div>
+                        </div>
+                    </div>
+                    <div class="Burger3">
+                        <img src="img/burger 4.jpg" title= "Disgusting burger" height="300" id = "b3">
+                        <div class = "overlay">
+                            <div class="text">Disgusting Burger</div>
+                        </div>
+                    </div>
+                    <div class="TastyBurger">Tasty Burger</div>
+                    <div class="CartoonBurger">Cartoon Burger</div>
+                    <div class="DisgustingBurger">Disgusting Burger</div>
+                    <div class="ListOne">
+                        <ul style="list-style-type:none;">
+                            <li>Fresh and Nice</li>
+                            <li>Tasty and Delicious</li>
+                            <li>Goes in your mouth</li>
+                        </ul>
+                    </div>
+                    <div class="ListTwo">
+                        <ul style="list-style-type:none;">
+                            <li>Papery Consistence</li>
+                            <li>Nice to Look at</li>
+                            <li>Grows in your mouth</li>
+                        </ul>
+                    </div>
+                    <div class="ListThree">
+                        <ul style="list-style-type:none;">
+                            <li>Someone dropped it on the floor</li>
+                            <li>May contain hair</li>
+                            <li>Gross in your mouth</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>-->
+            <section id = "orderButton">
+                <header id = "HeadlineC">Contact Information</header>
+                <form>
+                    <p>
+                        <br><label for="firstname">First</label><br><br>
+                        <input type="text" id="firstname" name="fn" required="required" placeholder="First name"><br>
+                    </p>
+                    <p>
+                        <br><label for="lastname">Last</label><br><br>
+                        <input type="text" id="lastname" name="ln" placeholder="Last name"><br>
+                    </p>
+                    <p>
+                        <br><label for = "email">E-mail</label><br><br>
+                        <input type="email" id="email" name="email" required="required" placeholder="E-mail address">
+                    </p>
+                    <p>
+                        <br><label for = "adress"> Adress </label><br><br>
+                        <input type = "adress" id = "adress" name="adress" required="required" placeholder="Adress">
+                    </p>
+                </form>
+
+                <br>
+                <header>Payment Method</header>
+                <p>
+                    <label for = "paymentMethod"></label><br>
+                    <select id = "paymentMethod" name="pm">
+                        <option>Credit Card</option>
+                        <option>Swish</option>
+                        <option>Cash ;)</option>
+                        <option>In natura :D</option>
+                    </select><br>
+                </p><br>
+                <section class = "GenderSelect">
+                    <br><label>Gender:</label><br><br>
+                    Male:
+                    <input type = "radio" name = "gender" value = "male"><br><br>
+                    Female:
+                    <input type = "radio" name = "gender" value = "female"><br><br>
+                    Non-binary:
+                    <input type = "radio" name = "gender" value = "Undisclosed"><br><br>
+                    It's a secret ;-):
+                    <input type = "radio" name = "gender" value = "It's a secret ;)"><br><br>
+                </section>
+
+            <br>
+            <h1> Click in the map! </h1>
+            <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                <div class="view-box">
+                    <div id ="dots" v-on:click="displayOrder">
+                        <div
+                                v-bind:style="{ left: this.orders.x + 'px', top: this.orders.y + 'px'}">
+                            T
+                        </div>
+                    </div>
+                </div>
+
+            <div>
+                <button v-on:click = "getBoxValues" ><img src="https://www.dw.com/image/47863948_303.jpg" width ="80">
+                    Burger Time!
+                </button>
+
+            <div v-if="activeOrder">
+                {{this.orderings.fullName}}:<br>
+                Your burger: {{this.orderings.burgers}} <br>
+                Email: {{this.orderings.email}}<br>
+                Gender: {{this.orderings.gender}}<br>
+                Adress: {{this.orderings.adress}}
+
+
+            </div>
+            </div>
+            </section>
+        </main>
+        <footer id = "footer">
+            <br>
+            <head id = "footerHead">
+                Customer information:<br>
+            </head>
+            <br/>
+            <body>
+                <p id = "footerBody">
+                    All complains are forwarded to Mandus Hjelm
+                    <br/>Approved by Alva Efraimsson
+                </p>
+            </body>
+        </footer>
     </body>
 </html>

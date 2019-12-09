@@ -8,6 +8,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+var counter = 0;
  
 // Pick arbitrary port for server
 var port = 3000;
@@ -40,8 +41,10 @@ function Data() {
   Adds an order to to the queue
 */
 Data.prototype.addOrder = function (order) {
-  //Store the order in an "associative array" with orderId as key
-  this.orders[order.orderId] = order;
+  //Store the order in an "associative array" with counter as key
+  counter += 1;
+  this.orders[counter] = order;
+
 };
 
 Data.prototype.getAllOrders = function () {
